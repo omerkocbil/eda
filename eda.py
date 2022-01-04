@@ -9,3 +9,37 @@ warnings.filterwarnings("ignore")
 
 #set print format to float format for all numeric outputs to prevent like 'e+06' outputs
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+
+### EDA Guideline
+
+#get data
+data = pd.read_csv("sample_datasets/house_price.csv")
+
+#get first five record
+data.head()
+
+#get last five record
+data.tail()
+
+#get first n record
+data.head(100)
+
+#get last n record
+data.tail(100)
+
+#get shape of data
+data.shape
+
+#get label of each column
+data.columns.values
+
+#get data types of features
+data.dtypes
+
+#get features and their data types
+#null_counts=True --> show features with null or non-null situations
+data.info(null_counts=True)
+
+#get summary descriptive statistics of columns with mean, std and etc.
+data.describe()
