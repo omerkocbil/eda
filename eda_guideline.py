@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+from scipy.stats import norm
+from scipy import stats
 
 # set warnings setting to ignore mode
 import warnings
@@ -168,3 +170,9 @@ for i in range(len(categorical_features.columns)):
     ax = sns.boxplot(categorical_features.iloc[:,i].dropna(), data.SalePrice)
     ax.axis(ymin=0, ymax=800000)
 plt.tight_layout()
+
+#draw histogram with standard norm graph on histogram
+sns.distplot(data['SalePrice'], fit=norm)
+
+#draw check normal distribution/probability plot
+res = stats.probplot(data['SalePrice'], plot=plt)
