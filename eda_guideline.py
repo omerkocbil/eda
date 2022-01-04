@@ -180,3 +180,11 @@ stats.probplot(data['SalePrice'], plot=plt)
 
 #create table of groupby feature values vs target class
 data[["OverallQual", "SalePrice"]].groupby(['OverallQual'], as_index=False).mean().sort_values(by='SalePrice', ascending=True)
+
+#draw distribution of features values approach target class's different values
+g = sns.FacetGrid(data2, col='Survived')
+g.map(plt.hist, 'Age', bins=20)
+
+grid = sns.FacetGrid(data2, col='Survived', row='Pclass', size=2.2, aspect=1.6)
+grid.map(plt.hist, 'Age', alpha=.5, bins=20)
+grid.add_legend()
