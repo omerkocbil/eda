@@ -138,3 +138,4 @@ plt.tight_layout()
 #get summary descriptive statistics of categorical columns with count, freq and etc.
 categorical_features.describe()
 categorical_features.describe().T.freq.sort_values(ascending = False)
+
