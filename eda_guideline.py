@@ -62,6 +62,12 @@ data.isnull().sum()
 #data.isnull() returns the same result in the next line below data.isna()
 data.isna().mean().sort_values(ascending = False).head()
 
+#create table of missing values
+total = data.isnull().sum().sort_values(ascending=False)
+percent = (data.isnull().sum()/data.isnull().count()).sort_values(ascending=False)
+missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
+missing_data.head(20)
+
 #plot features with missing data
 missing = data.isnull().sum()
 missing = missing[missing > 0]
