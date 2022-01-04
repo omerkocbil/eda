@@ -57,6 +57,13 @@ sns.set(style = 'whitegrid')
 ax = sns.barplot(x = missing.index.tolist(), y = missing, palette = 'hot_r')
 ax.set_xticklabels(ax.get_xticklabels(), rotation = 90)
 
+#get missing values on heatmap
+#first parameter data's null situations of all cell
+#cbar=False --> remove colorbar symbol on right of the graph
+#cmap='viridis' --> heatmap colormap choice
+plt.figure(figsize=(30, 30))
+sns.heatmap(data.isnull(), cbar=False, yticklabels=False, cmap='viridis')
+
 #get numerical features
 numerical_features = data.select_dtypes(exclude = ['object']).copy()
 numerical_features.columns
@@ -96,5 +103,5 @@ data.corr()
 #show correlations with heatmap graph
 #annot=True --> show correlation values on grid-cells
 #cmap='viridis' --> heatmap colormap choice
-fig = plt.figure(figsize=(40, 40))
+plt.figure(figsize=(40, 40))
 sns.heatmap(data.corr(), annot=True, cmap='viridis')
