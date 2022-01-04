@@ -42,7 +42,19 @@ data.dtypes
 data.info(null_counts=True)
 
 #get summary descriptive statistics of columns with mean, std and etc.
+#include='all' --> numeric, categoric and object
 data.describe()
+data.describe(include='all')
+
+#get number of duplicates entries
+data.duplicated()
+data.duplicated().sum()
+
+#get unique values of categorical features
+data.Foundation.unique()
+
+#get counts of values in the categorical features
+data.Foundation.value_counts()
 
 #get number of missing values for each feature
 data.isnull().sum()
@@ -123,3 +135,7 @@ for i in range(len(categorical_features.columns)):
     ax = sns.countplot(categorical_features.iloc[:,i].dropna())
     plt.xticks(rotation = 90)
 plt.tight_layout()
+
+#get summary descriptive statistics of categorical columns with count, freq and etc.
+categorical_features.describe()
+categorical_features.describe().T.freq.sort_values(ascending = False)
