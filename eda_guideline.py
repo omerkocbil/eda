@@ -127,6 +127,13 @@ correlation = data.select_dtypes(exclude = 'object').corr()
 plt.figure(figsize=(20, 20))
 sns.heatmap(correlation > 0.8, annot = True, square = True, cbar=False)
 
+#get 10 most corr features on heatmap
+k = 10
+cols = data.corr().nlargest(k, 'SalePrice')['SalePrice'].index
+cm = np.corrcoef(data[cols].values.T)
+sns.set(font_scale=1.25)
+hm = sns.heatmap(cm, cbar=True, annot=True, square=True, fmt='.2f', annot_kws={'size': 10}, yticklabels=cols.values, xticklabels=cols.values)
+
 #plot distributions of categorical features
 fig = plt.figure(figsize = (20,50))
 for i in range(len(categorical_features.columns)):
