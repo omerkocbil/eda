@@ -17,6 +17,7 @@ pd.set_option('display.float_format', lambda x: '%.3f' % x)
 
 #get data
 data = pd.read_csv("sample_datasets/house_price.csv")
+data2 = pd.read_csv("sample_datasets/titanic.csv")
 
 #get first five record
 data.head()
