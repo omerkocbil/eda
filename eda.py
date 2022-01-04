@@ -76,7 +76,7 @@ numerical_features.columns
 categorical_features = data.select_dtypes(include = ['object']).copy()
 categorical_features.columns
 
-#plot distributions of features
+#plot distributions of numerical features
 fig = plt.figure(figsize = (20,25))
 sns.set(style = 'whitegrid')
 for i in range(len(numerical_features.columns)):
@@ -85,7 +85,7 @@ for i in range(len(numerical_features.columns)):
     plt.xlabel(numerical_features.columns[i])
 plt.tight_layout()
 
-#plot statistics dispersion of features
+#plot statistics dispersion of numerical features
 fig = plt.figure(figsize = (20,25))
 sns.set(style = 'darkgrid')
 for i in range(len(numerical_features.columns)):
@@ -93,7 +93,7 @@ for i in range(len(numerical_features.columns)):
     sns.boxplot(y = numerical_features.iloc[:,i].dropna())
 plt.tight_layout()
 
-#plot bivariate analysis with all feature vs target class
+#plot bivariate analysis with all numerical feature vs target class
 fig = plt.figure(figsize = (20,25))
 sns.set(style = 'whitegrid')
 for i in range(len(numerical_features.columns)):
@@ -116,3 +116,10 @@ correlation = data.select_dtypes(exclude = 'object').corr()
 plt.figure(figsize=(20, 20))
 sns.heatmap(correlation > 0.8, annot = True, square = True, cbar=False)
 
+#plot distributions of categorical features
+fig = plt.figure(figsize = (20,50))
+for i in range(len(categorical_features.columns)):
+    fig.add_subplot((len(categorical_features.columns)/4)+1, 4, i+1)
+    ax = sns.countplot(categorical_features.iloc[:,i].dropna())
+    plt.xticks(rotation = 90)
+plt.tight_layout()
