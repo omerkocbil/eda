@@ -47,6 +47,10 @@ data.describe()
 #get number of missing values for each feature
 data.isnull().sum()
 
+#get percentage of missing values for each feature
+#data.isnull() returns the same result in the next line below data.isna()
+data.isna().mean().sort_values(ascending = False).head()
+
 #plot features with missing data
 missing = data.isnull().sum()
 missing = missing[missing > 0]
@@ -111,3 +115,4 @@ sns.heatmap(data.corr(), annot=True, cmap='viridis')
 correlation = data.select_dtypes(exclude = 'object').corr()
 plt.figure(figsize=(20, 20))
 sns.heatmap(correlation > 0.8, annot = True, square = True, cbar=False)
+
