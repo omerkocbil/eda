@@ -43,3 +43,17 @@ data.info(null_counts=True)
 
 #get summary descriptive statistics of columns with mean, std and etc.
 data.describe()
+
+#get number of missing values for each feature
+data.isnull().sum()
+
+#plot features with missing data
+missing = data.isnull().sum()
+missing = missing[missing > 0]
+missing.sort_values(inplace = True)
+
+fig = plt.figure(figsize = (10,10))
+sns.set(style = 'whitegrid')
+ax = sns.barplot(x = missing.index.tolist(), y = missing, palette = 'hot_r')
+ax.set_xticklabels(ax.get_xticklabels(), rotation = 90)
+
