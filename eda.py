@@ -73,3 +73,11 @@ for i in range(len(numerical_features.columns)):
     sns.distplot(numerical_features.iloc[:,i].dropna(), rug = True, hist = False, kde_kws = {'bw':0.1}, color = 'b')
     plt.xlabel(numerical_features.columns[i])
 plt.tight_layout()
+
+#plot statistics dispersion of features
+fig = plt.figure(figsize = (20,25))
+sns.set(style = 'darkgrid')
+for i in range(len(numerical_features.columns)):
+    fig.add_subplot((len(numerical_features.columns)/4)+1, 4, i+1)
+    sns.boxplot(y = numerical_features.iloc[:,i].dropna())
+plt.tight_layout()
