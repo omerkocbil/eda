@@ -139,3 +139,10 @@ plt.tight_layout()
 categorical_features.describe()
 categorical_features.describe().T.freq.sort_values(ascending = False)
 
+#get skewness
+data.skew()
+data['SalePrice'].skew()
+
+#get kurtosis
+data.kurt()
+data['SalePrice'].kurt()
