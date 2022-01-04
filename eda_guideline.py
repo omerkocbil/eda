@@ -146,3 +146,12 @@ data['SalePrice'].skew()
 #get kurtosis
 data.kurt()
 data['SalePrice'].kurt()
+
+#plot bivariate analysis with all categorical feature vs target class
+fig = plt.figure(figsize = (20,25))
+sns.set(style = 'whitegrid')
+for i in range(len(categorical_features.columns)):
+    fig.add_subplot((len(categorical_features.columns)/4)+1, 4, i+1)
+    ax = sns.boxplot(categorical_features.iloc[:,i].dropna(), data.SalePrice)
+    ax.axis(ymin=0, ymax=800000)
+plt.tight_layout()
