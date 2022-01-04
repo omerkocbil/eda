@@ -57,3 +57,10 @@ sns.set(style = 'whitegrid')
 ax = sns.barplot(x = missing.index.tolist(), y = missing, palette = 'hot_r')
 ax.set_xticklabels(ax.get_xticklabels(), rotation = 90)
 
+#get numerical features
+numerical_features = data.select_dtypes(exclude = ['object']).copy()
+numerical_features.columns
+
+#get categorical features
+categorical_features = data.select_dtypes(include = ['object']).copy()
+categorical_features.columns
