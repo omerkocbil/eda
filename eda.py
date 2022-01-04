@@ -89,3 +89,12 @@ for i in range(len(numerical_features.columns)):
     fig.add_subplot((len(numerical_features.columns)/4)+1, 4, i+1)
     sns.scatterplot(numerical_features.iloc[:,i].dropna(), data.SalePrice)
 plt.tight_layout()
+
+#get correlations of between all features
+data.corr()
+
+#show correlations with heatmap graph
+#annot=True --> show correlation values on grid-cells
+#cmap='viridis' --> heatmap colormap choice
+fig = plt.figure(figsize=(40, 40))
+sns.heatmap(data.corr(), annot=True, cmap='viridis')
