@@ -188,3 +188,7 @@ g.map(plt.hist, 'Age', bins=20)
 grid = sns.FacetGrid(data2, col='Survived', row='Pclass', size=2.2, aspect=1.6)
 grid.map(plt.hist, 'Age', alpha=.5, bins=20)
 grid.add_legend()
+
+#create crosstab between features
+pd.crosstab(pd.cut(data2['Age'], bins=8), data2['Sex'])
+pd.crosstab(pd.cut(data2['Age'], bins=8), [data2['Sex'], data2['Survived']])
