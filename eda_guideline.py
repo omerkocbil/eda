@@ -175,4 +175,7 @@ plt.tight_layout()
 sns.distplot(data['SalePrice'], fit=norm)
 
 #draw check normal distribution/probability plot
-res = stats.probplot(data['SalePrice'], plot=plt)
+stats.probplot(data['SalePrice'], plot=plt)
+
+#create table of groupby feature values vs target class
+data[["OverallQual", "SalePrice"]].groupby(['OverallQual'], as_index=False).mean().sort_values(by='SalePrice', ascending=True)
