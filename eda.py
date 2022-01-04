@@ -105,3 +105,9 @@ data.corr()
 #cmap='viridis' --> heatmap colormap choice
 plt.figure(figsize=(40, 40))
 sns.heatmap(data.corr(), annot=True, cmap='viridis')
+
+#plot corr only greater than threshold on heatmap
+#data.corr() returns the same result as the next line below
+correlation = data.select_dtypes(exclude = 'object').corr()
+plt.figure(figsize=(20, 20))
+sns.heatmap(correlation > 0.8, annot = True, square = True, cbar=False)
