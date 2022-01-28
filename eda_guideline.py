@@ -225,3 +225,11 @@ sns.pointplot(x="Pclass", y="Survived", hue="Sex", data=data2,
 pp = sns.pairplot(data2, hue = 'Survived', palette = 'deep', size=1.2, diag_kind = 'kde', 
                   diag_kws=dict(shade=True), plot_kws=dict(s=10))
 pp.set(xticklabels=[])
+
+#find outliers with IQR
+Q1 = data2.quantile(0.25)
+Q3 = data2.quantile(0.75)
+IQR = Q3 - Q1
+print(IQR)
+data2_without_outlier = data2[~((data2 < (Q1 - 1.5 * IQR)) | (data2 > (Q3 + 1.5 * IQR))).any(axis=1)]
+data2_without_outlier.shape
