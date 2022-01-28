@@ -241,3 +241,8 @@ z = np.abs(stats.zscore(data2.select_dtypes(exclude = ['object'])))
 print(z)
 threshold = 3
 print(np.where(z > 3)) #first array is row and second array is col number
+
+#find outliers with ISO
+from sklearn.ensemble import IsolationForest
+iso = IsolationForest(contamination=0.1)
+values = iso.fit_predict(data2.select_dtypes(exclude = ['object']))
