@@ -1,3 +1,6 @@
+#***** Toplu başucu olarak bakılabilecek bir kaynak *****#
+#https://www.kaggle.com/vbmokin/eda-for-tabular-data-advanced-techniques
+
 import pandas as pd
 import numpy as np
 import seaborn as sns
