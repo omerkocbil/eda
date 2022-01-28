@@ -139,6 +139,12 @@ correlation = data.select_dtypes(exclude = 'object').corr()
 plt.figure(figsize=(20, 20))
 sns.heatmap(correlation > 0.8, annot = True, square = True, cbar=False)
 
+#plot corr only greater than threshold on heatmap with different style
+plt.figure(figsize=(20, 20))
+sns.heatmap(data.corr()[(data.corr() >= 0.5) | (data.corr() <= -0.4)], 
+            cmap='viridis', vmax=1.0, vmin=-1.0, linewidths=0.1,
+            annot=True, annot_kws={"size": 8}, square=True)
+
 #get 10 most corr features on heatmap
 k = 10
 cols = data.corr().nlargest(k, 'SalePrice')['SalePrice'].index
