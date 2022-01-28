@@ -201,3 +201,11 @@ grid.add_legend()
 #create crosstab between features
 pd.crosstab(pd.cut(data2['Age'], bins=8), data2['Sex'])
 pd.crosstab(pd.cut(data2['Age'], bins=8), [data2['Sex'], data2['Survived']])
+
+#feature histogram by target class
+plt.hist(x = [data2[data2['Survived']==1]['Age'], data2[data2['Survived']==0]['Age']], 
+         stacked=True, color = ['g','r'],label = ['Survived','Dead'])
+plt.title('Age Histogram by Survival')
+plt.xlabel('Age (Years)')
+plt.ylabel('# of Passengers')
+plt.legend()
