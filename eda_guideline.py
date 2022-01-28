@@ -209,3 +209,14 @@ plt.title('Age Histogram by Survival')
 plt.xlabel('Age (Years)')
 plt.ylabel('# of Passengers')
 plt.legend()
+
+#compare feature values with another variable
+fig, (maxis1, maxis2) = plt.subplots(1, 2,figsize=(14,12))
+#how does embarked factor with sex & survival compare
+sns.pointplot(x="Embarked", y="Survived", hue="Sex", data=data2,
+              palette={"male": "blue", "female": "pink"},
+              markers=["*", "o"], linestyles=["-", "--"], ax = maxis1)
+#how does class factor with sex & survival compare
+sns.pointplot(x="Pclass", y="Survived", hue="Sex", data=data2,
+              palette={"male": "blue", "female": "pink"},
+              markers=["*", "o"], linestyles=["-", "--"], ax = maxis2)
