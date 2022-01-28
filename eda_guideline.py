@@ -220,3 +220,8 @@ sns.pointplot(x="Embarked", y="Survived", hue="Sex", data=data2,
 sns.pointplot(x="Pclass", y="Survived", hue="Sex", data=data2,
               palette={"male": "blue", "female": "pink"},
               markers=["*", "o"], linestyles=["-", "--"], ax = maxis2)
+
+#pair plots of entire dataset
+pp = sns.pairplot(data2, hue = 'Survived', palette = 'deep', size=1.2, diag_kind = 'kde', 
+                  diag_kws=dict(shade=True), plot_kws=dict(s=10))
+pp.set(xticklabels=[])
