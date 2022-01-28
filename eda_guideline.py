@@ -18,6 +18,8 @@ pd.set_option('display.float_format', lambda x: '%.3f' % x)
 #get data
 data = pd.read_csv("sample_datasets/house_price.csv")
 data2 = pd.read_csv("sample_datasets/titanic.csv")
+data3 = pd.read_csv("sample_datasets/iris.csv")
+data4 = pd.read_csv("sample_datasets/netflix_titles.csv")
 
 #get first five record
 data.head()
@@ -246,3 +248,14 @@ print(np.where(z > 3)) #first array is row and second array is col number
 from sklearn.ensemble import IsolationForest
 iso = IsolationForest(contamination=0.1)
 values = iso.fit_predict(data2.select_dtypes(exclude = ['object']))
+
+#word cloud
+from wordcloud import WordCloud
+plt.figure(figsize=(40,20))
+wordcloud = WordCloud(
+                      background_color='Black',
+                      width=1920,
+                      height=1080
+                                ).generate(" ".join(data4.description))
+plt.imshow(wordcloud)
+plt.axis('off')
