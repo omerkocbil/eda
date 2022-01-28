@@ -40,6 +40,9 @@ data.columns.values
 #get data types of features
 data.dtypes
 
+#get data count of features
+data.count()
+
 #get features and their data types
 #null_counts=True --> show features with null or non-null situations
 data.info(null_counts=True)
