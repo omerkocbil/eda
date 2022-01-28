@@ -233,3 +233,11 @@ IQR = Q3 - Q1
 print(IQR)
 data2_without_outlier = data2[~((data2 < (Q1 - 1.5 * IQR)) | (data2 > (Q3 + 1.5 * IQR))).any(axis=1)]
 data2_without_outlier.shape
+
+#find outliers with z-score
+from scipy import stats
+import numpy as np
+z = np.abs(stats.zscore(data2.select_dtypes(exclude = ['object'])))
+print(z)
+threshold = 3
+print(np.where(z > 3)) #first array is row and second array is col number
